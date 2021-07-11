@@ -1,5 +1,9 @@
-import ItemProduct from './ItemProduct';
+import {ButtonPrimary, ButtonSecondary} from './Buttons';
+import Inputs from './Inputs';
+// import ItemProduct from './ItemProduct';
 
 export {
-    ItemProduct
+    ButtonPrimary, ButtonSecondary,
+    Inputs,
+    // ItemProduct
 }
