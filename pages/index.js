@@ -1,30 +1,35 @@
-import styles from '../styles/Home.module.css'
-import {ButtonPrimary, ButtonSecondary} from '../component';
+import React, { useState } from 'react';
+import { ItemProduct } from '../component';
+import { TEXT_TEST } from '../src/constants';
 
-export default function Home() {
+const styles = {
+  container: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  }
+}
+
+export default function Dashboard() {
+  const [dataProduct, setDataProduct] = useState([
+    {
+      attachmentUrl: '',
+      productName: 'qweasd',
+      productDesc: TEXT_TEST,
+      productPrice: 12000,
+    }
+  ]);
   return (
-    <div className={styles.container}>
-      <ButtonPrimary title={'Hello'} />
-      <ButtonSecondary title={'World'} />
-
-      {/* <div className="card">
-        <div className="row">
-          <div className="col">
-
-          </div>
-          <div className="col">
-            Column
-          </div>
-          <div className="col">
-            Column
-          </div>
-        </div>
-      </div>
-
-      <ItemProduct
-        title={'Product A'}
-        description={'description of Product A'}
-      /> */}
+    <div style={styles.container}>
+      {dataProduct.map((item) => {
+        return (
+          <ItemProduct
+            title={item.productName}
+            price={item.productPrice}
+          />
+        )
+      })}
     </div>
   )
 }

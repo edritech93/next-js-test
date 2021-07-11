@@ -2,12 +2,14 @@ import {ButtonPrimary, ButtonSecondary} from './Buttons';
 import Inputs from './Inputs';
 import CardView from './CardView';
 import TextPicker from './TextPicker';
-// import ItemProduct from './ItemProduct';
+import ItemProduct from './ItemProduct';
+import {Text, Title} from './Text';
 
 export {
     ButtonPrimary, ButtonSecondary,
     Inputs,
     CardView,
     TextPicker,
-    // ItemProduct
+    ItemProduct,
+    Text, Title,
 }
