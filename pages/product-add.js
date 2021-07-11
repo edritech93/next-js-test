@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Inputs, ButtonPrimary, ButtonSecondary, CardView } from '../component';
+import { Inputs, ButtonPrimary, ButtonSecondary, CardView, TextPicker } from '../component';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -24,6 +24,16 @@ export default function ProductAdd(props) {
     const { product } = props;
 
     const [loading, setLoading] = useState(false);
+    const [dataCategory, setdataCategory] = useState([
+        {
+            label: 'Pakaian Pria',
+            value: '123qwe'
+        },
+        {
+            label: 'Pakaian Wanita',
+            value: 'qweasd'
+        },
+    ]);
     const [initialData, setInitialData] = useState({
         product_name: '',
         product_description: '',
@@ -114,14 +124,15 @@ export default function ProductAdd(props) {
                             message={errors.product_description}
                             style={{ marginBottom: 16 }}
                         />
-                        <Inputs
-                            title={'Category'}
+                        <TextPicker
+                            data={dataCategory}
+                            label={'Category'}
                             value={values.category_id}
                             onBlur={() => setFieldTouched('category_id')}
                             onChange={handleChange('category_id')}
                             isError={touched.category_id && errors.category_id}
                             message={errors.category_id}
-                            style={{ marginBottom: 16 }}
+                            containerStyle={{ marginBottom: 16 }}
                         />
                         <div style={styles.wrapButton}>
                             <ButtonSecondary
