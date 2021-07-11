@@ -1,21 +1,26 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { Inputs, ButtonPrimary, ButtonSecondary } from '../component';
+import React, { useState, useEffect } from 'react';
+import { Inputs, ButtonPrimary, ButtonSecondary, CardView } from '../component';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
+const styles = {
+    container: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
-}));
+    wrapForm: {
+        width: '60%',
+    },
+    wrapButton: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignSelf: 'flex-end'
+    }
+}
 
 export default function ProductAdd(props) {
-    const classes = useStyles();
     const { product } = props;
 
     const [loading, setLoading] = useState(false);
@@ -30,7 +35,7 @@ export default function ProductAdd(props) {
         setInitialData({
             product_name: product?.product_name ?? '',
             product_description: product?.product_description ?? '',
-            product_price: product ? String(product.product_price) : '0',
+            product_price: product ? String(product.product_price) : '',
             category_id: product?.category_id ?? '',
         });
     }, [product]);
@@ -56,16 +61,8 @@ export default function ProductAdd(props) {
 
     const _onSubmit = values => {
         // setLoading(true);
-        // const bodySave = {
-        //   phone_number: values.phone_number,
-        // };
-        // ObjStorage.set(STORAGE.LOGIN_SAVED, bodySave);
         // API.singleRequest(API.login(values))
         //   .then(response => {
-        //     const dataLogin = response.data;
-        //     Helper.setToken(dataLogin.access_token);
-        //     Helper.setRefreshToken(dataLogin.refresh_token);
-        //     _onSubmitDevice();
         //   })
         //   .catch(error => {
         //     props.showAlert(error);
@@ -73,7 +70,7 @@ export default function ProductAdd(props) {
         //   });
     };
     return (
-        <Fragment>
+        <div style={styles.container}>
 
             <Formik
                 initialValues={initialData}
@@ -89,7 +86,7 @@ export default function ProductAdd(props) {
                     isValid,
                     handleSubmit,
                 }) => (
-                    <div>
+                    <CardView style={styles.wrapForm}>
                         <Inputs
                             title={'Product Name'}
                             value={values.product_name}
@@ -97,7 +94,7 @@ export default function ProductAdd(props) {
                             onChange={handleChange('product_name')}
                             isError={touched.product_name && errors.product_name}
                             message={errors.product_name}
-                            containerStyle={{ marginBottom: 16 }}
+                            style={{ marginBottom: 16 }}
                         />
                         <Inputs
                             title={'Product Price'}
@@ -106,7 +103,7 @@ export default function ProductAdd(props) {
                             onChange={handleChange('product_price')}
                             isError={touched.product_price && errors.product_price}
                             message={errors.product_name}
-                            containerStyle={{ marginBottom: 16 }}
+                            style={{ marginBottom: 16 }}
                         />
                         <Inputs
                             title={'Product Description'}
@@ -115,7 +112,7 @@ export default function ProductAdd(props) {
                             onChange={handleChange('product_description')}
                             isError={touched.product_description && errors.product_description}
                             message={errors.product_description}
-                            containerStyle={{ marginBottom: 16 }}
+                            style={{ marginBottom: 16 }}
                         />
                         <Inputs
                             title={'Category'}
@@ -124,23 +121,24 @@ export default function ProductAdd(props) {
                             onChange={handleChange('category_id')}
                             isError={touched.category_id && errors.category_id}
                             message={errors.category_id}
-                            containerStyle={{ marginBottom: 16 }}
-                        />
-                        <ButtonSecondary
-                            title={'Cancel'}
-                            onPress={_onPressCancel}
                             style={{ marginBottom: 16 }}
                         />
-                        <ButtonPrimary
-                            title={'Add'}
-                            disabled={!isValid}
-                            onPress={handleSubmit}
-                            style={{ marginBottom: 16 }}
-                        />
-                    </div>
+                        <div style={styles.wrapButton}>
+                            <ButtonSecondary
+                                title={'Cancel'}
+                                onPress={_onPressCancel}
+                                style={{ marginRight: 16 }}
+                            />
+                            <ButtonPrimary
+                                title={'Add'}
+                                disabled={!isValid}
+                                onPress={handleSubmit}
+                            />
+                        </div>
+                    </CardView>
                 )}
             </Formik>
 
-        </Fragment>
+        </div>
     )
 }
