@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ItemProduct, AppBarView } from '../component';
+import { ItemProduct, AppBarView, GridView } from '../component';
 import { TEXT_TEST } from '../src/constants';
 
 const styles = {
@@ -7,30 +7,83 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
+  },
+  appBar: {
+    marginBottom: 16,
   }
 }
 
 export default function Dashboard() {
   const [dataProduct, setDataProduct] = useState([
     {
-      attachmentUrl: '',
-      productName: 'qweasd',
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
       productDesc: TEXT_TEST,
-      productPrice: 12000,
-    }
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
+    {
+      attachmentUrl: 'https://picsum.photos/200',
+      productName: 'Product Name',
+      productDesc: TEXT_TEST,
+      productPrice: 1000,
+    },
   ]);
+
+  const _renderItem = ({ item }) => {
+    return (
+      <ItemProduct
+        title={item.productName}
+        price={item.productPrice}
+        image={item.attachmentUrl}
+      />
+    )
+  }
   return (
     <div style={styles.container}>
-      <AppBarView />
-      {dataProduct.map((item, index) => {
-        return (
-          <ItemProduct
-            key={index}
-            title={item.productName}
-            price={item.productPrice}
-          />
-        )
-      })}
+      <AppBarView style={styles.appBar} />
+      <GridView data={dataProduct} renderItem={_renderItem} />
     </div>
   )
 }

@@ -10,17 +10,17 @@ const styles = {
 }
 
 export default function ItemProduct(props) {
-    const { title, price, style, onPressAdd } = props;
+    const { title, price, image = null, style, onPressAdd } = props;
 
-    const myLoader = ({ src, width, quality }) => {
-        return `https://picsum.photos/200`
+    const loadImage = ({ src, width, quality }) => {
+        return image ?? null;
     }
 
     return (
         <CardView style={{ ...styles.container, ...style }}>
             <Image
-                loader={myLoader}
-                src={"me.png"}
+                loader={loadImage}
+                src={"image.png"}
                 alt={"image-product"}
                 width={200}
                 height={200}

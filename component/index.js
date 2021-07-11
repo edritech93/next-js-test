@@ -6,6 +6,7 @@ import ItemProduct from './ItemProduct';
 import {Text, Title} from './Text';
 import AppBarView from './AppBarView';
 import Search from './Search';
+import GridView from './GridView';
 
 export {
     ButtonPrimary, ButtonSecondary,
@@ -16,4 +17,5 @@ export {
     Text, Title,
     AppBarView,
     Search,
+    GridView,
 }
