@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ItemProduct } from '../component';
+import { ItemProduct, AppBarView } from '../component';
 import { TEXT_TEST } from '../src/constants';
 
 const styles = {
@@ -7,7 +7,6 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
   }
 }
 
@@ -22,9 +21,11 @@ export default function Dashboard() {
   ]);
   return (
     <div style={styles.container}>
-      {dataProduct.map((item) => {
+      <AppBarView />
+      {dataProduct.map((item, index) => {
         return (
           <ItemProduct
+            key={index}
             title={item.productName}
             price={item.productPrice}
           />

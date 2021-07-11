@@ -17,11 +17,11 @@ export function Text(props) {
 }
 
 export function Title(props) {
-    const { type = 'h4', children, style } = props;
+    const { type = 'h6', color = 'primary', children, style } = props;
     return (
         <Typography
             variant={type}
-            color={"primary"}
+            color={color}
             style={{ ...style, ...styles }}
             gutterBottom>{children}</Typography>
     );
