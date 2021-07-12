@@ -9,18 +9,20 @@ export function ButtonPrimary(props) {
             color={"primary"}
             style={style}
             disabled={disabled}
+            onClick={() => onPress()}
         >{title}</Button>
     );
 }
 
 export function ButtonSecondary(props) {
-    const { title, style, disabled } = props;
+    const { title, style, disabled, onPress } = props;
     return (
         <Button
             variant={'outlined'}
             color={"primary"}
             style={style}
             disabled={disabled}
+            onClick={() => onPress()}
         >{title}</Button>
     );
 }

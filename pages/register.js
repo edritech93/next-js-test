@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Inputs, ButtonPrimary, ButtonSecondary, CardView, } from '../component';
-import { useRouter } from 'next/router';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import router from 'next/router';
 
 const styles = {
     container: {
@@ -22,8 +22,8 @@ const styles = {
     }
 }
 
-export default function Login(props) {
-    const router = useRouter()
+export default function Register(props) {
+
     const [loading, setLoading] = useState(false);
     const [initialData, setInitialData] = useState({
         phone_number: '',
@@ -85,14 +85,23 @@ export default function Login(props) {
                             message={errors.password}
                             style={{ marginBottom: 16 }}
                         />
+                         <Inputs
+                            title={'Re-type Password'}
+                            value={values.password}
+                            onBlur={() => setFieldTouched('password')}
+                            onChange={handleChange('password')}
+                            isError={touched.password && errors.password}
+                            message={errors.password}
+                            style={{ marginBottom: 16 }}
+                        />
                         <div style={styles.wrapButton}>
                             <ButtonSecondary
-                                title={'Register'}
-                                onPress={() => router.push('register')}
+                                title={'Back'}
+                                onPress={() => router.back()}
                                 style={{ marginRight: 16 }}
                             />
                             <ButtonPrimary
-                                title={'Login'}
+                                title={'Register'}
                                 disabled={!isValid}
                                 onPress={handleSubmit}
                             />
