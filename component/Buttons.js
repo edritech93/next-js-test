@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 
 export function ButtonPrimary(props) {
-    const { title, style, disabled = false } = props;
+    const { title, style, disabled = false, onPress } = props;
     return (
         <Button
             variant={"contained"}
