@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Inputs, ButtonPrimary, ButtonSecondary, CardView, TextPicker } from '../component';
+import {ButtonPrimary, ButtonSecondary} from './Buttons' 
 import { Formik } from 'formik';
+import TextPicker from './TextPicker';
+import CardView from './CardView';
+import Inputs from './Inputs';
 import * as Yup from 'yup';
 
 const styles = {

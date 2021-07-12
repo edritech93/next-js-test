@@ -5,7 +5,7 @@ import { ButtonPrimary } from './Buttons';
 
 const styles = {
     container: {
-        width: 250,
+        width: 200,
     }
 }
 
@@ -22,15 +22,17 @@ export default function ItemProduct(props) {
                 loader={loadImage}
                 src={"image.png"}
                 alt={"image-product"}
-                width={200}
-                height={200}
+                width={100}
+                height={100}
             />
             <Title>{title}</Title>
             <Text>{price}</Text>
-            <ButtonPrimary
-                title={'Add'}
-                onPress={() => onPressAdd()}
-            />
+            {onPressAdd && (
+                <ButtonPrimary
+                    title={'Add'}
+                    onPress={() => onPressAdd()}
+                />
+            )}
         </CardView>
     );
 }

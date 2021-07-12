@@ -8,6 +8,7 @@ import AppBarView from './AppBarView';
 import Search from './Search';
 import GridView from './GridView';
 import Banner from './Banner';
+import ProductAdd from './ProductAdd';
 
 export {
     ButtonPrimary, ButtonSecondary,
@@ -20,4 +21,5 @@ export {
     Search,
     GridView,
     Banner,
+    ProductAdd,
 }
